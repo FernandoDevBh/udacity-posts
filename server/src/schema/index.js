@@ -7,7 +7,7 @@ const typeDefs = `
     type Comment{
         id: ID!
         parentId: ID!
-        timestamp: Int!
+        timestamp: Float!
         body: String!
         author: String!
         voteScore: Int!
@@ -18,21 +18,30 @@ const typeDefs = `
     type Post{
         id: ID!
         parentId:ID!
-        timestamp: Int!
+        timestamp: Float!
         title: String!
         body: String!
-        author: Strint!
+        author: String!
         voteScore: Int!
         deleted: Boolean!        
         comments: [Comment]
     }
 
     # Categorias dos posts
-    type Categories{
+    type Category{
         # Id da categoria
         id: ID!
         name: String!
         path: String!
         posts: [Post!]
-    }        
+    }
+    
+    type Query {
+        # Realiza a busca das categorias
+        allCategories : [Category!]!
+    }
 `;
+
+const schema = makeExecutableSchema({ typeDefs, resolvers });
+
+module.exports = schema;

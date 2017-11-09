@@ -1,39 +1,15 @@
-const clone = require('clone');
+const { getAll } = require('../db/categories');
+const { getByCategory } = require('../db/posts');
 
-let db = {};
-
-const defaultData = [
-    {
-        id: '17DFCADF-C4E8-4CDF-BC6A-47407D955F68',
-        name: 'react',
-        path: 'react'
+module.exports ={
+    Query: {
+        allCategories: (root, data, { token }) => {
+            return getAll(token);
+        }
     },
-    {
-        id: 'DF076E92-390E-4501-8247-7948204AE0F3',
-        name: 'redux',
-        path: 'redux'
-    },
-    {
-        id: 'C20BBDF2-2289-4C06-80FE-865EFD54BAB3',
-        name: 'udacity',
-        path: 'udacity'
-    },
-];
-
-function getData (token = '') {
-    //Each token has it's own copy of the DB. The token in this case is like an app id.
-    let data = db[token]
-    //This populates the default user data if there isn't any in the db.
-    if (data == null) {
-        data = db[token] = clone(defaultData)
+    Category: {
+        posts: ({ id }, data, { token }) => {
+            return getByCategory(token, id);
+        }
     }
-    return data;
-}
-
-function getAll (token ='') {
-    return new Promise(resolver => resolver(getData(token)));
-}
-
-moodule.exports = {
-    getAll
-}
+};
