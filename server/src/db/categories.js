@@ -1,4 +1,5 @@
 const clone = require('clone');
+const ValidationError = require('../exceptions/ValidationError');
 
 let db = {};
 
@@ -31,7 +32,7 @@ function getData (token = '') {
 }
 
 function getAll (token ='') {
-    return new Promise(resolver => resolver(getData(token)));
+    return getData(token);  
 }
 
 module.exports = {

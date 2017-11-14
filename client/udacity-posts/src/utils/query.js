@@ -1,0 +1,1 @@
+export const allCategories = () => ({query:'{categories{id name path }}',variables:null,operationName: null});

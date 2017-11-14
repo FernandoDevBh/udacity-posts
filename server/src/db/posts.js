@@ -36,12 +36,10 @@ function getData (token) {
 }
 
 function getByCategory (token, parentId) {
-    return new Promise((res) => {
-        let posts = getData(token)
-        let keys = Object.keys(posts)
-        let filtered_keys = keys.filter(key => posts[key].parentId === parentId && !posts[key].deleted)
-        res(filtered_keys.map(key => posts[key]))
-    })
+    let posts = getData(token)
+    let keys = Object.keys(posts)
+    let filtered_keys = keys.filter(key => posts[key].parentId === parentId && !posts[key].deleted)
+    return filtered_keys.map(key => posts[key]);
 }
 
 

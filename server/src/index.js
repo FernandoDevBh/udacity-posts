@@ -1,11 +1,13 @@
 require('dotenv').config()
 const express = require('express');
+const cors = require('cors')
 
 const schema = require('./schema');
 const {graphqlExpress, graphiqlExpress} = require('apollo-server-express');
 const {authenticate} = require('./auth/authorization');
 
 const start = async () => {
+
     // Esse pacote automaticamente realiza o Parse JSON nas requests
     const bodyParser = require('body-parser');
 
@@ -20,6 +22,8 @@ const start = async () => {
     }
 
     const app = express();
+    
+    app.use(cors());
 
     app.use('/api', bodyParser.json(), graphqlExpress(buildOptions));
 

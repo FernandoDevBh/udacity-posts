@@ -38,7 +38,7 @@ const typeDefs = `
     
     type Query {
         # Realiza a busca das categorias
-        allCategories : [Category!]!
+        categories : [Category!]!
     }
 `;
 
