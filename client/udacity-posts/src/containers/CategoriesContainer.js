@@ -12,19 +12,35 @@ class CategoriesContainer extends Component{
         this.props.actions.getCategories();
     }
 
-    render(){
-        if(!this.props.category.list){
+    desnormalize = () => {
+        if (this.props.categories){
+            return Object.keys(this.props.categories).map(key => {
+                const result = {...this.props.categories[key] };
+                const ids = Object.keys(result.posts);
+                if (ids.length > 0){
+                    result.posts = ids.map(id => result.posts[id]);
+                }else{
+                    result.posts = [];
+                }
+                return result;
+            });
+        }else{
             return null;
         }
-        
-        return (
-            <ListCategories categories={this.props.category.list} />
-        );
+    }
+
+    render(){
+        const categories = this.desnormalize();       
+
+        return categories ? <ListCategories title='Udacity Posts' categories={categories} /> : null;
     }
 }
 
 const mapStateToProps = (state) =>{
-    return {category: state.category};
+    const { categories, isLoading, error } = state.category;
+    return {
+        categories, isLoading, error
+    };
 }
 
 const mapDispatchToProps = (dispatch) => ({

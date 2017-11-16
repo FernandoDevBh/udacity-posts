@@ -4,8 +4,7 @@ class Layout extends Component {
   render () {
       return (
           <div className="site-wrapper">
-              <div className="site-wrapper-inner">     
-                  <h1>Udacity Posts Project</h1>             
+              <div className="site-wrapper-inner">               
                   <div>
                       {this.props.children}
                   </div>

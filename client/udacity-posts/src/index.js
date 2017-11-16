@@ -8,7 +8,7 @@ import { Switch, Route } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 import { reducer as formReducer } from 'redux-form';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import baseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import registerServiceWorker from './registerServiceWorker';
 import logger from 'redux-logger';
@@ -42,11 +42,12 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store} >
-        <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+        <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
             <BrowserRouter>
                 <Layout path="/" component={Layout}>
                     <Switch>
-                    <Route exact path="/" component={CategoriesContainer} />
+                    <Route exact path='/' component={CategoriesContainer} />
+                    <Route exaxt path='/category/:id' component={(props) => (<div>{console.log(props)}</div>)} />
                     </Switch>
                 </Layout>
             </BrowserRouter>

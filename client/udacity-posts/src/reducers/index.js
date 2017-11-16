@@ -18,7 +18,7 @@ function reducer (state=categoriesState, action) {
         case CATEGORIES_FULLFILLED:
             return {
                 ...state,
-                list: action.categories,
+                categories: action.categories,
                 isLoading: false
             }
         default:
