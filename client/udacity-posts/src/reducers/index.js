@@ -1,4 +1,4 @@
-import { CATEGORIES_LOAD, CATEGORIES_ERROR, CATEGORIES_FULLFILLED } from '../actions';
+import { CATEGORIES_LOAD, CATEGORIES_ERROR, CATEGORIES_FULLFILLED } from '../constantes';
 
 const categoriesState = {};
 

@@ -42,8 +42,25 @@ function getByCategory (token, parentId) {
     return filtered_keys.map(key => posts[key]);
 }
 
+function setVote (token, id, voto) {
+    let posts = getData(token);
+    post = posts[id];
+    switch(voto) {
+        case 'Up':
+            post.voteScore = post.voteScore + 1
+            break;
+        case 'Down':
+            post.voteScore = post.voteScore - 1
+            break;
+        default:
+        console.log(`posts.vote received incorrect parameter: ${voto}`)
+    }
+    return post;
+}
+
 
 module.exports = {    
-    getByCategory
+    getByCategory,
+    setVote
 }
   

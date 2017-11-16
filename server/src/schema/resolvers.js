@@ -1,5 +1,5 @@
 const { getAll } = require('../db/categories');
-const { getByCategory } = require('../db/posts');
+const { getByCategory, setVote } = require('../db/posts');
 const { getByParent } = require('../db/comments');
 const { executeAsync } = require('../utils/execute');
 
@@ -7,6 +7,11 @@ module.exports ={
     Query: {
         categories: (root, data, { token }) => {
             return executeAsync(getAll, token);
+        }
+    },
+    Mutation:{
+        setVoteScore: (root, {vote: { id, voto}}, { token }) => {
+            return executeAsync(setVote, token, id, voto);
         }
     },
     Category: {

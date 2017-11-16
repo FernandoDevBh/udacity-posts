@@ -35,10 +35,26 @@ const typeDefs = `
         path: String!
         posts: [Post!]
     }
+
+    enum Voto {
+        Up
+        Down
+    }
+
+    input VoteInput{
+        # O id do post a ser modificado
+        id: ID!
+        voto: Voto!
+    }
     
     type Query {
         # Realiza a busca das categorias
         categories : [Category!]!
+    }
+
+    type Mutation {
+        # Adiciona/remove um voto de acordo com a opção
+        setVoteScore(vote: VoteInput!):Post        
     }
 `;
 
