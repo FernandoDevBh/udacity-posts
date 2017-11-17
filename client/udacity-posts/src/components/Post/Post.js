@@ -17,7 +17,7 @@ const Post = (props) => {
             subtitleStyle={styles.gridTile}
             title={title}
             subtitle={<span>por <b>{author}</b></span>}
-            actionIcon={<VoteContainer postId={post.postId} voteScore={post.voteScore} />}
+            actionIcon={<VoteContainer postId={postId} voteScore={voteScore} />}
             />
     );
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListItem } from 'material-ui/List';
 import { GridList } from 'material-ui/GridList';
 import Post from './Post';
 
@@ -14,8 +13,7 @@ const styles = {
 
 function PostList(props) {
     const { posts } = props;
-    return [
-        <ListItem style={{ cursor: 'arrow' }} key={1}>
+    return(        
             <div>
                 <GridList cellHeight={60} style={styles.gridList}>
                     {
@@ -28,9 +26,7 @@ function PostList(props) {
                         />))
                     }
                 </GridList>
-            </div>
-        </ListItem>
-    ];
+            </div>);
 }
 
 PostList.propTypes = {
