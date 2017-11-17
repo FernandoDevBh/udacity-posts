@@ -5,34 +5,20 @@ import { bindActionCreators } from 'redux';
 
 import * as categorieActions from '../../actions/category';
 import ListCategories from '../../components/category/ListCategories';
+import { desnormalize } from '../../utils/transformData';
 
 class CategoriesContainer extends Component{  
     
     componentDidMount(){
         this.props.actions.getCategories();
-    }
-
-    desnormalize = () => {
-        if (this.props.categories){
-            return Object.keys(this.props.categories).map(key => {
-                const result = {...this.props.categories[key] };
-                const ids = Object.keys(result.posts);
-                if (ids.length > 0){
-                    result.posts = ids.map(id => result.posts[id]);
-                }else{
-                    result.posts = [];
-                }
-                return result;
-            });
-        }else{
-            return null;
-        }
-    }
+    }    
 
     render(){
-        const categories = this.desnormalize();       
-
-        return categories ? <ListCategories title='Udacity Posts' categories={categories} /> : null;
+        const { categories } = this.props;        
+        return categories ? 
+                <ListCategories 
+                    title='Udacity Posts' 
+                    categories={desnormalize(this.props.categories)} /> : null;
     }
 }
 

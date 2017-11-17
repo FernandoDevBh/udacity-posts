@@ -57,7 +57,7 @@ function Category(props) {
             leftAvatar={avatar(category)}   
             nestedItems={[
                 <ListItem style={{cursor:'arrow'}} key='1'>
-                    <div style={styles.root}>
+                    <div>
                     <GridList cellHeight={60} style={styles.gridList}>
                         {
                             category.posts.map((post, idx) =>(
@@ -67,7 +67,7 @@ function Category(props) {
                                     key={idx}
                                     title={post.title}
                                     subtitle={<span>por <b>{post.author}</b></span>}
-                                    actionIcon={<VoteContainer postId={post.id} voteScore={post.voteScore} /> }
+                                    actionIcon={<VoteContainer postId={post.id} voteScore={post.voteScore} />}
                                     >
                                 </GridTile>
                             ))

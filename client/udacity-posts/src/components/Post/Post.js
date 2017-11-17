@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { GridTile } from 'material-ui/GridList';
-import VoteScore from '../Vote/VoteScore';
+import VoteContainer from '../../containers/Vote/VoteContainer';
 
 const styles = {    
     gridTile: {
@@ -9,20 +10,23 @@ const styles = {
 }
 
 const Post = (props) => {
-    const { title, author, id, voteScore } = props;
+    const { title, author, postId, voteScore } = props;
     return (
         <GridTile 
             style={styles.gridTile}
             subtitleStyle={styles.gridTile}
             title={title}
             subtitle={<span>por <b>{author}</b></span>}
-            actionIcon={<VoteScore  
-                            postId={id} 
-                            voteScore={voteScore} 
-                            addVote={() => console.log('implementar add')}
-                            removeVote={() => console.log('implementar remove')}/>}
+            actionIcon={<VoteContainer postId={post.postId} voteScore={post.voteScore} />}
             />
     );
+}
+
+Post.propTypes = {
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    postId: PropTypes.string.isRequired,
+    voteScore: PropTypes.number.isRequired,
 }
 
 export default Post;

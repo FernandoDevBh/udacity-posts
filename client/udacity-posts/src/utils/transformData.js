@@ -21,3 +21,16 @@ export const normalizeCategorias = (data = []) => {
         return {};
     }, {})
 }
+
+export const desnormalize = (data = []) => {
+    return Object.keys(data).map(key => {
+        const result = {...data[key] };
+        const ids = Object.keys(result.posts);
+        if (ids.length > 0){
+            result.posts = ids.map(id => result.posts[id]);
+        }else{
+            result.posts = [];
+        }
+        return result;
+    });
+}
