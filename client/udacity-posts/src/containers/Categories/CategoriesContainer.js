@@ -3,8 +3,8 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as categorieActions from '../actions/category';
-import ListCategories from '../components/category/ListCategories';
+import * as categorieActions from '../../actions/category';
+import ListCategories from '../../components/category/ListCategories';
 
 class CategoriesContainer extends Component{  
     

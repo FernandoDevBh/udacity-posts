@@ -1,12 +1,12 @@
 const axios = require('axios');
 const token = localStorage.getItem('token-udacity-post')
-
+const apiUrl = process.env.REACT_APP_API_URI;
 const instancia = (function (){
     let instance;
 
     function createInstance (){
         return axios.create({
-            baseURL: process.env.REACT_APP_API_URI,
+            baseURL: apiUrl,
             timeout: 2000,
             headers: {
                 'authorization': token

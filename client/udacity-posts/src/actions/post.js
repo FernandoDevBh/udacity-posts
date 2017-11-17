@@ -2,15 +2,11 @@ import { post } from '../utils/request';
 import { setVote } from '../utils/query';
 import { POST_LOAD, VOTE_FULLFILLED, POST_ERROR } from '../constantes';
 
-const postLoad = (isLoad = false) => ({ type: POST_LOAD });
+const postLoad = (isLoad = false) => ({ type: POST_LOAD, isLoad });
 const postError = (error) => ({ type: POST_ERROR, error });
-const voteFullfilled = ({ id, voteScore}) => ({
-    type: VOTE_FULLFILLED,
-    id,
-    voteScore
-});
+const voteFullfilled = ({ id, voteScore}) => ({ type: VOTE_FULLFILLED, id, voteScore });
 
-export const addVote = (postId = '', ok = false) => {
+export const vote = (postId = '', ok = false) => {
     return async dispatch =>{
         dispatch(postLoad);
         try {

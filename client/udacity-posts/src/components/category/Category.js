@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ListItem } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 import { Link } from 'react-router-dom';
-import VoteScore from '../Vote/VoteScore';
+import VoteContainer from '../../containers/Vote/VoteContainer';
 import {GridList, GridTile} from 'material-ui/GridList';
 
 const styles = {
@@ -67,12 +67,7 @@ function Category(props) {
                                     key={idx}
                                     title={post.title}
                                     subtitle={<span>por <b>{post.author}</b></span>}
-                                    actionIcon={<VoteScore 
-                                                    postId={post.id} 
-                                                    voteScore={post.voteScore} 
-                                                    addVote={() => console.log('like')}
-                                                    removeVote={() => console.log('unlike')}
-                                                    /> }
+                                    actionIcon={<VoteContainer postId={post.id} voteScore={post.voteScore} /> }
                                     >
                                 </GridTile>
                             ))
